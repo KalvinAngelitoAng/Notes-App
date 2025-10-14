@@ -1,16 +1,20 @@
-import '../styles/styles.css';
+import "../styles/styles.css";
 
-import App from './pages/app';
+import RootView from "./pages/root-view";
+import AppPresenter from "./pages/app-presenter";
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const app = new App({
-    content: document.querySelector('#main-content'),
-    drawerButton: document.querySelector('#drawer-button'),
-    navigationDrawer: document.querySelector('#navigation-drawer'),
+document.addEventListener("DOMContentLoaded", async () => {
+  const view = new RootView({
+    content: document.querySelector("#main-content"),
+    drawerButton: document.querySelector("#drawer-button"),
+    navigationDrawer: document.querySelector("#navigation-drawer"),
   });
-  await app.renderPage();
 
-  window.addEventListener('hashchange', async () => {
-    await app.renderPage();
+  const presenter = new AppPresenter({ view });
+  presenter.initialize();
+  await presenter.handleRouteChange();
+
+  window.addEventListener("hashchange", async () => {
+    await presenter.handleRouteChange();
   });
 });
