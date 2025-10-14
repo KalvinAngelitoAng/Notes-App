@@ -1,2 +1,2 @@
-APP_URL=<url_aplikasi>
+APP_URL=https://kalvinangelitoang.github.io/Notes-App/
 MAP_SERVICE_API_KEY=<api_key>

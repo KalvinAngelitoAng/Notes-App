@@ -2,6 +2,7 @@
   "name": "app-starter-project-with-webpack",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/KalvinAngelitoAng/Notes-App.git",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start-dev": "webpack serve --config webpack.dev.js",
