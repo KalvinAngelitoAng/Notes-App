@@ -1,68 +1,51 @@
-# App Starter Project with Webpack
+# Notes-App: Aplikasi Berbagi Cerita
 
-Proyek ini adalah setup dasar untuk aplikasi web yang menggunakan webpack untuk proses bundling, Babel untuk transpile JavaScript, serta mendukung proses build dan serving aplikasi.
+Notes-App adalah sebuah Single-Page Application (SPA) yang memungkinkan pengguna untuk berbagi cerita atau momen menarik mereka, lengkap dengan gambar dan lokasi geografis. Proyek ini dibangun sebagai submission untuk kelas "Belajar Pengembangan Web Intermediate" dari Dicoding.
 
-## Table of Contents
+Aplikasi ini di-deploy menggunakan GitHub Pages dan dapat diakses melalui link berikut:
+**[Kunjungi Notes-App](https://kalvinangelitoang.github.io/Notes-App/)**
 
-- [Getting Started](#getting-started)
-- [Scripts](#scripts)
-- [Project Structure](#project-structure)
+---
+## Fitur Unggulan
 
-## Getting Started
+Aplikasi ini dilengkapi dengan berbagai fitur:
 
-### Prerequisites
+* **Arsitektur SPA & MVP**: Navigasi antar halaman terasa instan tanpa *reload*, dengan kode yang terstruktur rapi menggunakan pola *Model-View-Presenter* (MVP).
+* **Transisi Halaman Kustom**: Setiap perpindahan halaman diiringi dengan animasi *slide-in* yang halus untuk pengalaman visual yang lebih baik.
+* **Peta Interaktif**:
+    * **Multiple Tile Layers**: Pengguna dapat memilih tiga jenis tampilan peta (Street, Satellite, dan Topographic).
+    * **Sinkronisasi Peta & Daftar**: Arahkan kursor ke sebuah cerita, dan *marker* di peta akan aktif. Klik *marker* di peta, dan halaman akan otomatis menggulir ke cerita yang sesuai.
+    * **Filter Cerita**: Cari cerita berdasarkan nama atau deskripsi secara *real-time*.
+* **Tambah Cerita Fleksibel**:
+    * **Akses Kamera Langsung**: Ambil foto langsung dari kamera perangkat Anda untuk diunggah.
+    * **Mode Tamu**: Pengguna dapat mem-posting cerita tanpa perlu membuat akun atau *login*.
+    * **Pemilihan Lokasi**: Tandai lokasi cerita Anda dengan mudah hanya dengan mengklik peta.
+* **Aksesibilitas Penuh (A11y)**:
+    * Dapat dioperasikan sepenuhnya dengan *keyboard*.
+    * Dilengkapi fitur *skip-to-content* dan *ARIA live regions* untuk pengguna pembaca layar.
+    * Desain responsif untuk semua ukuran perangkat.
 
-- [Node.js](https://nodejs.org/) (disarankan versi 12 atau lebih tinggi)
-- [npm](https://www.npmjs.com/) (Node package manager)
+---
+## Struktur Proyek
 
-### Installation
-
-1. Download starter project [di sini](https://raw.githubusercontent.com/dicodingacademy/a219-web-intermediate-labs/099-shared-files/starter-project-with-webpack.zip).
-2. Lakukan unzip file.
-3. Pasang seluruh dependencies dengan perintah berikut.
-   ```shell
-   npm install
-   ```
-
-## Scripts
-
-- Build for Production:
-  ```shell
-  npm run build
-  ```
-  Script ini menjalankan webpack dalam mode production menggunakan konfigurasi `webpack.prod.js` dan menghasilkan sejumlah file build ke direktori `dist`.
-
-- Start Development Server:
-  ```shell
-  npm run start-dev
-  ```
-  Script ini menjalankan server pengembangan webpack dengan fitur live reload dan mode development sesuai konfigurasi di`webpack.dev.js`.
-
-- Serve:
-  ```shell
-  npm run serve
-  ```
-  Script ini menggunakan [`http-server`](https://www.npmjs.com/package/http-server) untuk menyajikan konten dari direktori `dist`.
-
-## Project Structure
-
-Proyek starter ini dirancang agar kode tetap modular dan terorganisir.
+Proyek ini menggunakan Webpack untuk *bundling* dan Babel untuk transpiling JavaScript. Strukturnya dirancang agar modular dan mudah dikelola.
 
 ```text
-starter-project/
-├── dist/                   # Compiled files for production
-├── src/                    # Source project files
-│   ├── public/             # Public files
-│   ├── scripts/            # Source JavaScript files
-│   │   └── index.js        # Main JavaScript entry file
-│   ├── styles/             # Source CSS files
-│   │   └── styles.css      # Main CSS file
-│   └── index.html/         # Main HTML file
-├── package.json            # Project metadata and dependencies
-├── package-lock.json       # Project metadata and dependencies
-├── README.md               # Project documentation
-├── STUDENT.txt             # Student information
-├── webpack.common.js       # Webpack common configuration
-├── webpack.dev.js          # Webpack development configuration
-└── webpack.prod.js         # Webpack production configuration
-```
+notes-app/
+├── .github/workflows/      # Konfigurasi GitHub Actions untuk auto-deploy
+├── dist/                   # Hasil build untuk production (dihasilkan otomatis)
+├── src/
+│   ├── public/             # Aset statis (gambar, favicon)
+│   ├── scripts/
+│   │   ├── data/           # Modul untuk interaksi dengan API
+│   │   ├── pages/          # Komponen halaman (View & Presenter)
+│   │   ├── routes/         # Konfigurasi routing
+│   │   ├── utils/          # Fungsi bantuan
+│   │   └── index.js        # Entry point utama aplikasi
+│   ├── styles/
+│   │   └── styles.css      # Styling global
+│   └── index.html          # Template HTML utama
+├── .gitignore
+├── package.json
+├── README.md               # Dokumentasi ini
+└── webpack.config.js       # (webpack.common, webpack.dev, webpack.prod)
