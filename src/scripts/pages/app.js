@@ -22,13 +22,11 @@ class App {
       this.#navigationDrawer.classList.toggle('open');
     });
 
-    // Close drawer when clicking outside
     document.body.addEventListener('click', (event) => {
       if (!this.#navigationDrawer.contains(event.target) && !this.#drawerButton.contains(event.target)) {
         this.#navigationDrawer.classList.remove('open');
       }
 
-      // Close drawer when clicking nav link
       this.#navigationDrawer.querySelectorAll('a').forEach((link) => {
         if (link.contains(event.target)) {
           this.#navigationDrawer.classList.remove('open');
@@ -36,7 +34,6 @@ class App {
       });
     });
 
-    // Close drawer with Escape key
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && this.#navigationDrawer.classList.contains('open')) {
         this.#navigationDrawer.classList.remove('open');
@@ -75,7 +72,6 @@ class App {
     const userToken = localStorage.getItem(CONFIG.USER_TOKEN_KEY);
     const url = getActiveRoute();
 
-    // Protected routes check
     const protectedRoutes = ['/', '/story/:id'];
     if (!userToken && protectedRoutes.includes(url)) {
       window.location.hash = '#/login';
@@ -87,7 +83,6 @@ class App {
       return;
     }
 
-    // Custom View Transition
     await this._transitionOut();
 
     const page = routes[url] || routes['/'];
@@ -98,7 +93,6 @@ class App {
 
     this._updateLoginStatus();
 
-    // Announce page change to screen readers
     this._announcePageChange(url);
   }
 
@@ -112,7 +106,6 @@ class App {
 
   async _transitionIn() {
     return new Promise((resolve) => {
-      // Force reflow
       this.#content.offsetHeight;
 
       this.#content.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -124,7 +117,6 @@ class App {
   }
 
   _announcePageChange(url) {
-    // Create or get announcement element for screen readers
     let announcer = document.getElementById('page-announcer');
     if (!announcer) {
       announcer = document.createElement('div');

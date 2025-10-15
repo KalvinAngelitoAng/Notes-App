@@ -66,12 +66,10 @@ export default class HomePage {
         </div>
       `;
 
-      // Click to view detail
       storyItem.addEventListener('click', () => {
         window.location.hash = `#/story/${story.id}`;
       });
 
-      // Hover to highlight marker
       storyItem.addEventListener('mouseenter', () => {
         this._highlightMarker(index);
       });
@@ -80,7 +78,6 @@ export default class HomePage {
         this._unhighlightMarker(index);
       });
 
-      // Make keyboard accessible
       storyItem.setAttribute('tabindex', '0');
       storyItem.setAttribute('role', 'button');
       storyItem.addEventListener('keypress', (e) => {
@@ -96,7 +93,6 @@ export default class HomePage {
   _initMap(stories) {
     this._map = L.map('map').setView([-6.2088, 106.8456], 5);
 
-    // Multiple Tile Layers for Advance criteria
     this._tileLayers = {
       street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -109,26 +105,21 @@ export default class HomePage {
       })
     };
 
-    // Add default layer
     this._tileLayers.street.addTo(this._map);
 
-    // Add layer control
     L.control.layers({
       "Street Map": this._tileLayers.street,
       "Satellite": this._tileLayers.satellite,
       "Topographic": this._tileLayers.topo
     }).addTo(this._map);
 
-    // Add markers
     stories.forEach((story, index) => {
       if (story.lat && story.lon) {
         const marker = L.marker([story.lat, story.lon]).addTo(this._map)
           .bindPopup(`<b>${story.name}</b><br>${story.description}`);
 
-        // Store reference for highlighting
         this._markers[index] = marker;
 
-        // Click marker to scroll to story item and highlight it
         marker.on('click', () => {
           const storyItem = document.querySelector(`[data-index="${index}"]`);
           if (storyItem) {
@@ -145,7 +136,6 @@ export default class HomePage {
     const marker = this._markers[index];
     if (marker) {
       marker.openPopup();
-      // Optionally change icon or style
     }
   }
 
@@ -170,18 +160,15 @@ export default class HomePage {
       this._updateMapMarkers(filteredStories);
     });
 
-    // Make filter keyboard accessible
     filterInput.setAttribute('aria-label', 'Filter stories by name or description');
   }
 
   _updateMapMarkers(filteredStories) {
-    // Clear existing markers
     this._markers.forEach(marker => {
       if (marker) this._map.removeLayer(marker);
     });
     this._markers = [];
 
-    // Add filtered markers
     filteredStories.forEach((story, index) => {
       if (story.lat && story.lon) {
         const marker = L.marker([story.lat, story.lon]).addTo(this._map)
