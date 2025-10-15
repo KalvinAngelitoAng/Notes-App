@@ -875,3 +875,252 @@ html {
   outline: 3px solid #0056b3;
   outline-offset: 3px;
 }
+
+.main-footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #ecf0f1;
+  padding: 60px 0 20px;
+  margin-top: auto;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3 {
+  color: lightskyblue;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, lightskyblue, transparent);
+  border-radius: 2px;
+}
+
+.footer-section h4 {
+  color: lightskyblue;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-section p {
+  line-height: 1.8;
+  color: #bdc3c7;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.footer-section p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+  transition: transform 0.2s ease;
+}
+
+.footer-section ul li:hover {
+  transform: translateX(5px);
+}
+
+.footer-section ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  padding: 5px 0;
+  font-weight: 500;
+}
+
+.footer-section ul li a::before {
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: lightskyblue;
+}
+
+.footer-section ul li a:hover::before {
+  left: -25px;
+  opacity: 1;
+}
+
+.footer-section ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: lightskyblue;
+  transition: width 0.3s ease;
+}
+
+.footer-section ul li a:hover,
+.footer-section ul li a:focus {
+  color: lightskyblue;
+  transform: translateX(5px);
+}
+
+.footer-section ul li a:hover::after,
+.footer-section ul li a:focus::after {
+  width: 100%;
+}
+
+.footer-section p a {
+  color: lightskyblue;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.footer-section p a:hover,
+.footer-section p a:focus {
+  color: #fff;
+  background: rgba(135, 206, 235, 0.2);
+  text-decoration: underline;
+  text-decoration-color: lightskyblue;
+  text-underline-offset: 3px;
+}
+
+.footer-section p a:focus-visible {
+  outline: 2px solid lightskyblue;
+  outline-offset: 3px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(52, 73, 94, 0.5);
+  padding-top: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.footer-section nav ul li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.footer-section nav ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: lightskyblue;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-section nav ul li:hover::before {
+  transform: translateX(3px);
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+  .footer-section h3 {
+    font-size: 2rem;
+  }
+
+  .main-footer {
+    padding: 70px 0 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: 2fr 1.5fr 2fr;
+    gap: 60px;
+  }
+
+  .footer-section h3 {
+    font-size: 2.2rem;
+  }
+
+  .main-footer {
+    padding: 80px 0 30px;
+  }
+}
+
+.footer-section {
+  transition: transform 0.3s ease;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-section:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.footer-section a:focus-visible {
+  outline: 3px solid lightskyblue;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.footer-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.footer-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.footer-section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-section {
+    animation: none;
+  }
+}
