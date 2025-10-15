@@ -702,3 +702,176 @@ html {
 .button:hover::before {
   left: 0;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-old(root) {
+  animation-name: slide-out;
+}
+
+::view-transition-new(root) {
+  animation-name: slide-in;
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+.main-footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 40px 0 20px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: lightskyblue;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.footer-section h4 {
+  color: lightskyblue;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  color: #bdc3c7;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover,
+.footer-section ul li a:focus {
+  color: lightskyblue;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #34495e;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.story-date {
+  color: #888;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+*:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 3px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.story-item:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 3px;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.drawer-button:focus-visible,
+.button:focus-visible,
+.nav-list li a:focus-visible,
+.brand-name:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 3px;
+}
+
+.leaflet-control-layers,
+.leaflet-bar a {
+  cursor: pointer;
+}
+
+.leaflet-bar a:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.footer-section ul li a:focus-visible {
+  outline: 3px solid lightskyblue;
+  outline-offset: 2px;
+}
+
+#camera-button:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 3px;
+}
+
+#map:focus-visible,
+#map-add:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 3px;
+}

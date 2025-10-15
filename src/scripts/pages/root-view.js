@@ -20,7 +20,8 @@ class RootView {
 
   #setupDrawer() {
     this.#drawerButton.addEventListener("click", () => {
-      this.#navigationDrawer.classList.toggle("open");
+      const isOpen = this.#navigationDrawer.classList.toggle("open");
+      this.#drawerButton.setAttribute("aria-expanded", isOpen.toString());
     });
 
     document.body.addEventListener("click", (event) => {
@@ -29,11 +30,13 @@ class RootView {
         !this.#drawerButton.contains(event.target)
       ) {
         this.#navigationDrawer.classList.remove("open");
+        this.#drawerButton.setAttribute("aria-expanded", "false");
       }
 
       this.#navigationDrawer.querySelectorAll("a").forEach((link) => {
         if (link.contains(event.target)) {
           this.#navigationDrawer.classList.remove("open");
+          this.#drawerButton.setAttribute("aria-expanded", "false");
         }
       });
     });
@@ -44,6 +47,7 @@ class RootView {
         this.#navigationDrawer.classList.contains("open")
       ) {
         this.#navigationDrawer.classList.remove("open");
+        this.#drawerButton.setAttribute("aria-expanded", "false");
         this.#drawerButton.focus();
       }
     });
@@ -79,27 +83,24 @@ class RootView {
   }
 
   async transitionOut() {
-    return new Promise((resolve) => {
-      this.#content.style.opacity = "0";
-      this.#content.style.transform = "translateY(20px)";
-      setTimeout(resolve, 300);
-    });
+    return Promise.resolve();
   }
 
   async transitionIn() {
-    return new Promise((resolve) => {
-      // Force reflow
-      this.#content.offsetHeight;
-
-      this.#content.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-      this.#content.style.opacity = "1";
-      this.#content.style.transform = "translateY(0)";
-      setTimeout(resolve, 500);
-    });
+    return Promise.resolve();
   }
 
   async renderContent(htmlString) {
-    this.#content.innerHTML = htmlString;
+    if (!document.startViewTransition) {
+      this.#content.innerHTML = htmlString;
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      this.#content.innerHTML = htmlString;
+    });
+
+    await transition.finished;
   }
 
   announcePageChange(url) {

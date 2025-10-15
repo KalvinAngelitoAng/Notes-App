@@ -17,4 +17,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.addEventListener("hashchange", async () => {
     await presenter.handleRouteChange();
   });
+
+  // Handle skip to content
+  const skipLink = document.querySelector('.skip-to-content');
+  if (skipLink) {
+    skipLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const mainContent = document.querySelector('#main-content');
+      if (mainContent) {
+        mainContent.setAttribute('tabindex', '-1');
+        mainContent.focus();
+        mainContent.removeAttribute('tabindex');
+      }
+    });
+  }
 });

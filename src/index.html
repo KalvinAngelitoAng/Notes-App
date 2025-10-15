@@ -3,19 +3,20 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Notes-App - Platform for sharing your stories and moments with location">
     <link rel="shortcut icon" href="favicon.png">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
-    <title>Notes-App</title>
+    <title>Notes-App - Share Your Stories</title>
   </head>
   <body>
-    <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <header>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header role="banner">
       <div class="main-header container">
-        <a class="brand-name" href="#/">Notes-App</a>
+        <a class="brand-name" href="#/" aria-label="Notes-App home">Notes-App</a>
 
-        <nav id="navigation-drawer" class="navigation-drawer">
+        <nav id="navigation-drawer" class="navigation-drawer" role="navigation" aria-label="Main navigation">
           <ul id="nav-list" class="nav-list">
             <li><a href="#/">Home</a></li>
             <li><a href="#/add">Add Story</a></li>
@@ -24,10 +25,40 @@
           </ul>
         </nav>
 
-        <button id="drawer-button" class="drawer-button">☰</button>
+        <button id="drawer-button" class="drawer-button" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       </div>
     </header>
 
-    <main id="main-content" class="main-content"></main>
+    <main id="main-content" class="main-content" role="main"></main>
+
+    <footer class="main-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Notes-App</h3>
+            <p>Platform berbagi cerita dan momen menarik Anda</p>
+          </div>
+          <div class="footer-section">
+            <h4>Navigasi</h4>
+            <nav aria-label="Footer navigation">
+              <ul>
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/add">Add Story</a></li>
+                <li><a href="#/about">About</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="footer-section">
+            <h4>Kontak</h4>
+            <p>Email: <a href="mailto:kalvinangelitoang88@gmail.com">kalvinangelitoang88@gmail.com</a></p>
+            <p>Github: <a href="https://github.com/KalvinAngelitoAng">Kalvin Angelito Ang</a></p>
+            <p>Submission Dicoding - Belajar Pengembangan Web Intermediate</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Notes-App. All rights reserved. | Version 2.0.0</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
